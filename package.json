@@ -1,0 +1,32 @@
+{
+  "name": "contacts-react",
+  "version": "1.0.0",
+  "description": "A simple mobile-first React application to save and sort contacts",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukasshannon/contacts-react.git"
+  },
+  "author": "Lukas Shannon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukasshannon/contacts-react/issues"
+  },
+  "homepage": "https://github.com/lukasshannon/contacts-react#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.7",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.4"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}

@@ -23,19 +23,19 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   auth, [
-  check('name', 'Name is required').not().isEmpty(),
-  check('email', 'Must be a valid email address').isEmail(),
-  check('phone', 'Must be a valid phone number').isMobilePhone()
+  check('name', 'First name is required').not().isEmpty(),
+  check('lastname', 'Last name is required').not().isEmpty(),
+  check('email', 'Must be a valid email address').isEmail()
   ], async (req, res) => {
     const validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
       return res.status(400).json({ errors: validationErrors.array() });
     }
 
-    const { name, email, phone, type } = req.body;
+    const { name, lastname, email, phone, image } = req.body;
 
     try {
-      let newContact = await Contact.findOne({ name, user: req.user.id });
+      let newContact = await Contact.findOne({ name, lastname, user: req.user.id });
 
       // Check duplicates
       if (newContact) {
@@ -45,9 +45,10 @@ router.post(
       // Create new contact
       newContact = new Contact({
         name,
+        lastname,
         email,
         phone,
-        type,
+        image,
         user: req.user.id
       });
       // Save contact to database
@@ -66,22 +67,23 @@ router.post(
 // UPDATE CONTACT BY ID PARAMETER
 router.put('/:id', auth, oneOf([
   check('name', 'Name cannot be empty').not().isEmpty(),
-  check('email', 'Must be a valid email address').isEmail(),
-  check('phone', 'Must be a valid phone number').isMobilePhone()
+  check('lastname', 'Name cannot be empty').not().isEmpty(),
+  check('email', 'Must be a valid email address').isEmail()
   ], "Please ensure name, email and phone are valid."), async (req, res) => {
     const validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
       return res.status(400).json({ errors: validationErrors.array() });
     }
 
-    const { name, email, phone, type } = req.body;
+    const { name, lastname, email, phone, image } = req.body;
 
     // Build contact object
     const contactFields = {};
     if (name) contactFields.name = name;
+    if (lastname) contactFields.lastname = lastname;
     if (email) contactFields.email = email;
     if (phone) contactFields.phone = phone;
-    if (type) contactFields.type = type;
+    if (image) contactFields.image = image;
 
     try {
       // Search for contact in database by ID

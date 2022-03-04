@@ -9,6 +9,10 @@ const ContactSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  lastname: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true
@@ -16,9 +20,8 @@ const ContactSchema = mongoose.Schema({
   phone: {
     type: String
   },
-  type: {
-    type: String,
-    default: 'personal'
+  image: {
+    type: String
   },
   date: {
     type: Date,

@@ -12,3 +12,9 @@ A simple mobile-first React application to save and sort contacts using the MERN
 ## Client side
 
 - User interface is based on create-react-app
+- Axios is used for HTTP requests
+
+## Installation
+
+Application will be available on Heroku as a live demo.
+To run locally, download repository, install Node dependencies (including dev dependencies) and run `npm run dev`

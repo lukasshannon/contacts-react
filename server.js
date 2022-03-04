@@ -10,11 +10,6 @@ connectDB();
 // Server configuration
 app.use(express.json({extended: false}))
 
-// Main route for API
-app.get('/', (req, res) => {
-  res.json({msg: 'API for contact-react accessed'})
-})
-
 // Define Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));

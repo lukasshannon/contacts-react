@@ -1,11 +1,16 @@
 const express = require('express');
-const connectDB = require('./config/db');
 
+// Initialize server
 const app = express();
 
-// Connect MongoDB Atlas Database
+// Connect MongoDB Atlas database
+const connectDB = require('./config/db');
 connectDB();
 
+// Server configuration
+app.use(express.json({extended: false}))
+
+// Main route for API
 app.get('/', (req, res) => {
   res.json({msg: 'API for contact-react accessed'})
 })
@@ -15,6 +20,8 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contacts', require('./routes/contacts'));
 
+// Manage port
 const PORT = process.env.PORT || 5000;
 
+// Start server
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

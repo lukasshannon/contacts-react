@@ -16,5 +16,5 @@ A simple mobile-first React application to save and sort contacts using the MERN
 
 ## Installation
 
-Application will be available on Heroku as a live demo.
+Application will be available as a live demo on [Heroku (Click Here)](https://contacts-react-lukas.herokuapp.com/)
 To run locally, download repository, install Node dependencies (including dev dependencies) and run `npm run dev`
